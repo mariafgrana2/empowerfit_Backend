@@ -10,17 +10,18 @@ public class Address {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	private String streetAddress;
+	private String addressLine1;
+	private String addressLine2;
 	private String city;
 	private String state;
 	private int zipCode;
 	private String country;
-	//TODO preguntar sobre atributo de street adrees es mejor dividirlo en dos lineas
 	
 	protected Address() {}
 
-	public Address(String streetAddress, String city, String state, int zipCode, String country) {
-		this.streetAddress = streetAddress;
+	public Address(String addressLine1, String addressLine2, String city, String state, int zipCode, String country) {
+		this.addressLine1 = addressLine1;
+		this.addressLine2 = addressLine2;
 		this.city = city;
 		this.state = state;
 		this.zipCode = zipCode;
@@ -35,12 +36,20 @@ public class Address {
 		this.id = id;
 	}
 
-	public String getStreetAddress() {
-		return streetAddress;
+	public String getAddressLine1() {
+		return addressLine1;
 	}
 
-	public void setStreetAddress(String streetAddress) {
-		this.streetAddress = streetAddress;
+	public void setAddressLine1(String addressLine1) {
+		this.addressLine1 = addressLine1;
+	}
+
+	public String getAddressLine2() {
+		return addressLine2;
+	}
+
+	public void setAddressLine2(String addressLine2) {
+		this.addressLine2 = addressLine2;
 	}
 
 	public String getCity() {
@@ -77,9 +86,12 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return String.format("Address [id=%s, streetAddress=%s, city=%s, state=%s, zipCode=%s, country=%s]", id,
-				streetAddress, city, state, zipCode, country);
+		return String.format(
+				"Address [id=%s, addressLine1=%s, addressLine2=%s, city=%s, state=%s, zipCode=%s, country=%s]", id,
+				addressLine1, addressLine2, city, state, zipCode, country);
 	}
+
+
 	
 }
 

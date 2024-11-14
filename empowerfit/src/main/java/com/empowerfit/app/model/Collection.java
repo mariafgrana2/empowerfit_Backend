@@ -1,5 +1,11 @@
 package com.empowerfit.app.model;
 
-public class Collection {
+import jakarta.persistence.Entity;
 
+@Entity
+public class Collection {
+	private Long id;
+	private String name;
+	
+	// TODO terminar hasta saber como se hace una de tipo fecha
 }
