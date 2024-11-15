@@ -19,7 +19,7 @@ public class Color {
 		@Column(name="name_color", length=60, nullable=false)
 	 	private String color;
 	 
-		Color() {}
+		protected Color() {}
 
 		
 		public Color(String color) { 
