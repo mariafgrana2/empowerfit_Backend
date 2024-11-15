@@ -1,19 +1,21 @@
 package com.empowerfit.app.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
-@Table (name = "categories"
+@Table (name="categories")
 public class Category {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	@Column("name_categories", length=60 nullable=false)
-	private String categories;
+	@Column(name="name_category", length=60, nullable=false)
 	private String name;
+	@Column(name="description", length=150)
 	private String description;
 	
 	protected Category() {} 
@@ -23,7 +25,7 @@ public class Category {
 		this.description = description;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
