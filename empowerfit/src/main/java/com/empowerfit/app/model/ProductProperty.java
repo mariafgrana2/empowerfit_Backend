@@ -1,4 +1,12 @@
 package com.empowerfit.app.model;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 @Entity
 @Table(name="ProductProperties")
  public class ProductProperty {
@@ -19,12 +27,10 @@ package com.empowerfit.app.model;
 			this.material = material;
 		}
 
-		
 		public Long getId() {
 			return id;
 		}
 
-		
 		public void setId(Long id) {
 			this.id = id;
 		}
@@ -33,17 +39,14 @@ package com.empowerfit.app.model;
 			return size_id;
 		}
 
-	
 		public void setSize_id(Long size_id) {
 			this.size_id = size_id;
 		}
 
-		
 		public String getMaterial() {
 			return material;
 		}
 
-		
 		public void setMaterial(String material) {
 			this.material = material;
 		}

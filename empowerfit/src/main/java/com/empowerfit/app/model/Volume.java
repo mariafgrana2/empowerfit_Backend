@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "volumes")
+@Table(name="volumes")
 public class Volume {
 
     @Id
@@ -48,12 +48,4 @@ public class Volume {
     public String toString() {
         return String.format("Volume [id=%s, kg=%.2f]", id, kg);
     }
-}
-	
-	
-
-	
-
-
-
 }
