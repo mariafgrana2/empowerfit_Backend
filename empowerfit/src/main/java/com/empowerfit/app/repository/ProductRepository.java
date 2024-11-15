@@ -24,4 +24,6 @@ public interface ProductRepository {
 	    // Busca todos los productos que tengan un número de piezas específico
 	    List<Product> findByPieces(Integer pieces);
 
+		List<Product> findAll();
+
 }
