@@ -10,7 +10,7 @@ import java.util.Set;
 public interface UserRepository extends CrudRepository<User, Long> {
 
     // Encuentra un usuario por su correo electrónico.
-    User findByEmail(String email);
+    Optional<User> findByEmail(String email);
 
     // Encuentra un usuario por su número de teléfono.
     User findByPhone(String phone);

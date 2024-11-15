@@ -13,7 +13,7 @@ public interface OrderService {
 	    Order getOrderById(Long id);
 
 	    // Obtiene todas las órdenes realizadas por un cliente específico.
-	    List<Order> getOrdersByCustomerId(Long customerId);
+	    //List<Order> getOrdersByUserId(Long userId);
 
 	    // Obtiene todas las órdenes realizadas en una fecha específica.
 	    List<Order> getOrdersByPurchaseDate(LocalDate purchaseDate);
