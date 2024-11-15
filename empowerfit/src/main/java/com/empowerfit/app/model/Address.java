@@ -10,21 +10,19 @@ public class Address {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	private String addressLine1;
-	private String addressLine2;
+	private String streetAddress;
 	private String city;
 	private String state;
-	private int zipCode;
+	private int postalCode;
 	private String country;
 	
 	protected Address() {}
 
-	public Address(String addressLine1, String addressLine2, String city, String state, int zipCode, String country) {
-		this.addressLine1 = addressLine1;
-		this.addressLine2 = addressLine2;
+	public Address(String streetAddress, String city, String state, int postalCode, String country) {
+		this.streetAddress = streetAddress;
 		this.city = city;
 		this.state = state;
-		this.zipCode = zipCode;
+		this.postalCode = postalCode;
 		this.country = country;
 	}
 
@@ -36,21 +34,14 @@ public class Address {
 		this.id = id;
 	}
 
-	public String getAddressLine1() {
-		return addressLine1;
+	public String getStreetAddress() {
+		return streetAddress;
 	}
 
-	public void setAddressLine1(String addressLine1) {
-		this.addressLine1 = addressLine1;
+	public void setAddressLine1(String StreetAddress) {
+		this.streetAddress = StreetAddress;
 	}
 
-	public String getAddressLine2() {
-		return addressLine2;
-	}
-
-	public void setAddressLine2(String addressLine2) {
-		this.addressLine2 = addressLine2;
-	}
 
 	public String getCity() {
 		return city;
@@ -68,12 +59,12 @@ public class Address {
 		this.state = state;
 	}
 
-	public int getZipCode() {
-		return zipCode;
+	public int getPostalCode() {
+		return postalCode;
 	}
 
-	public void setZipCode(int zipCode) {
-		this.zipCode = zipCode;
+	public void setPostalCode(int postalCode) {
+		this.postalCode = postalCode;
 	}
 
 	public String getCountry() {
@@ -86,12 +77,9 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return String.format(
-				"Address [id=%s, addressLine1=%s, addressLine2=%s, city=%s, state=%s, zipCode=%s, country=%s]", id,
-				addressLine1, addressLine2, city, state, zipCode, country);
+		return String.format("Address [id=%s, streetAddress=%s, city=%s, state=%s, postalCode=%s, country=%s]", id,
+				streetAddress, city, state, postalCode, country);
 	}
-
-
 	
 }
 
