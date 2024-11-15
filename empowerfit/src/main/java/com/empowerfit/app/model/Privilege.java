@@ -1,5 +1,42 @@
 package com.empowerfit.app.model;
 
+@Entity
+@Table(name="privileges")
 public class Privilege {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	
+	private Long id;
+	@Column(name="privilege", length=20, nullable=false)
+	private String privilege;
+	
+	protected Privilege () {}
+	
+	public Privilege(String privilege) {
+		this.privilege = privilege;
+	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getPrivilege() {
+		return privilege;
+	}
+
+	public void setPrivilege(String privilege) {
+		this.privilege = privilege;
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("Privilege [id=%s, privilege=%s]", id, privilege);
+	}
+
+	
 }
