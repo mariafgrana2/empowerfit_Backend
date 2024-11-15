@@ -1,5 +1,24 @@
 package com.empowerfit.app.repository;
 
-public interface PrivilegeRepository {
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.empowerfit.app.model.Privilege;
+
+public interface PrivilegeRepository extends CrudRepository<Privilege, Long> {
+	
+	// SELECT * FROM privilege WHERE privilege = ?
+	List<Privilege> findByPrivilege(String privilege);
+	
+	// Busca un Privilege específico por id (REVISAR)
+	   Privilege findById(Long id);
+	
+	// Encontrar todos los privilegios únicos
+	Set<Privilege> findAllByPrivilege(String privilege);
+	
+	
 
 }
