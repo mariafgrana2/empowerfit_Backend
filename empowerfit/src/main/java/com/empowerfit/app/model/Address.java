@@ -1,5 +1,6 @@
 package com.empowerfit.app.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -7,79 +8,93 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Address {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
-	private String streetAddress;
-	private String city;
-	private String state;
-	private int postalCode;
-	private String country;
-	
-	protected Address() {}
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id") // Especificación explícita del nombre de la columna
+    private Long id;
 
-	public Address(String streetAddress, String city, String state, int postalCode, String country) {
-		this.streetAddress = streetAddress;
-		this.city = city;
-		this.state = state;
-		this.postalCode = postalCode;
-		this.country = country;
-	}
+    @Column(name = "street_address", nullable = false)
+    private String streetAddress;
 
-	public Long getId() {
-		return id;
-	}
+    @Column(name = "city", nullable = false)
+    private String city;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Column(name = "state", nullable = false)
+    private String state;
 
-	public String getStreetAddress() {
-		return streetAddress;
-	}
+    @Column(name = "postal_code", nullable = false)
+    private int postalCode;
 
-	public void setAddressLine1(String StreetAddress) {
-		this.streetAddress = StreetAddress;
-	}
+    @Column(name = "country", nullable = false)
+    private String country;
 
+    
+    protected Address() {}
 
-	public String getCity() {
-		return city;
-	}
+ 
+    public Address(String streetAddress, String city, String state, int postalCode, String country) {
+        this.streetAddress = streetAddress;
+        this.city = city;
+        this.state = state;
+        this.postalCode = postalCode;
+        this.country = country;
+    }
 
-	public void setCity(String city) {
-		this.city = city;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getState() {
-		return state;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setState(String state) {
-		this.state = state;
-	}
+    public String getStreetAddress() {
+        return streetAddress;
+    }
 
-	public int getPostalCode() {
-		return postalCode;
-	}
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
+    }
 
-	public void setPostalCode(int postalCode) {
-		this.postalCode = postalCode;
-	}
+    public String getCity() {
+        return city;
+    }
 
-	public String getCountry() {
-		return country;
-	}
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-	public void setCountry(String country) {
-		this.country = country;
-	}
+    public String getState() {
+        return state;
+    }
 
-	@Override
-	public String toString() {
-		return String.format("Address [id=%s, streetAddress=%s, city=%s, state=%s, postalCode=%s, country=%s]", id,
-				streetAddress, city, state, postalCode, country);
-	}
-	
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public int getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(int postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+            "Address [id=%s, streetAddress=%s, city=%s, state=%s, postalCode=%s, country=%s]", 
+            id, streetAddress, city, state, postalCode, country
+        );
+    }
 }
 

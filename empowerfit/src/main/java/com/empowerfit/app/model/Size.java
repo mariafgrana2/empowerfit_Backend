@@ -20,7 +20,7 @@ public class Size {
 	@Column(name="name_size", length=45, nullable=false)
  	private String size;
 	
-	Size () {}
+	protected Size () {}
 
 	public Size(String size) {
 		this.size = size;
