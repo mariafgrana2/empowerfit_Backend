@@ -1,76 +1,105 @@
 package com.empowerfit.app.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name="products")
 public class Product {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
-	private String name;
-	private String description;
-	private Double price;
-	private String imageUrl;
-	
-	//TODO revisar reestructura de propiedades y stock
-	
-	protected Product () {}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(name="name", length=200, nullable=false)
+    private String name;
+    @Column(name="description", length=1000, nullable=false)
+    private String description;
+    @Column(name="price", length=11, nullable=false)
+    private Double price;
+    @Column(name="imageUrl", length=250, nullable=false)
+    private String imageUrl;
+    @Column(name="stock", length=50, nullable=false)
+    private Integer stock;
+    @Column(name="pieces", length=50, nullable=false)
+    private Integer pieces;
 
-	public Product(String name, String description, Double price, String imageUrl) {
-		this.name = name;
-		this.description = description;
-		this.price = price;
-		this.imageUrl = imageUrl;
-	}
+    // TODO revisar reestructura de propiedades y stock
 
-	public Long getId() {
-		return id;
-	}
+    protected Product() {}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Product(String name, String description, Double price, String imageUrl, Integer stock, Integer pieces) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.imageUrl = imageUrl;
+        this.stock = stock;
+        this.pieces = pieces;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public Double getPrice() {
-		return price;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public void setPrice(Double price) {
-		this.price = price;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public String getImageUrl() {
-		return imageUrl;
-	}
+    public Double getPrice() {
+        return price;
+    }
 
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}
+    public void setPrice(Double price) {
+        this.price = price;
+    }
 
-	@Override
-	public String toString() {
-		return String.format("Product [id=%s, name=%s, description=%s, price=%s, imageUrl=%s]", id, name, description,
-				price, imageUrl);
-	}
-	
-	
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
+
+    public Integer getPieces() {
+        return pieces;
+    }
+
+    public void setPieces(Integer pieces) {
+        this.pieces = pieces;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+            "Product [id=%s, name=%s, description=%s, price=%s, imageUrl=%s, stock=%s, pieces=%s]",
+            id, name, description, price, imageUrl, stock, pieces
+        );
+    }
 }
