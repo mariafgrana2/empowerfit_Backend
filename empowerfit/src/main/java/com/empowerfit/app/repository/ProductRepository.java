@@ -26,4 +26,6 @@ public interface ProductRepository {
 
 		List<Product> findAll();
 
+		List<Product> findAll1();
+
 }
