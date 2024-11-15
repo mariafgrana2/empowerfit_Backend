@@ -1,4 +1,4 @@
-package com.empowerfit.app.repository;
+package com.empowerfit.app.service;
 
 import java.util.List;
 import java.util.Optional;

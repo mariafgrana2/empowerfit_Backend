@@ -1,24 +1,26 @@
-
-package com.empowerfit.app.repository;
+package com.empowerfit.app.service;
 
 import java.util.List;
-import java.util.Optional;
 import com.empowerfit.app.model.Category;
 
 public interface CategoryService {
 
-    // Busca todas las categorías por nombre
-    List<Category> findByName(String name);
+	// Crea una nueva categoría.
+    Category createCategory(Category category);
 
-    // Busca todas las categorías que tengan la misma descripción
-    List<Category> findByDescription(String description);
+    //Busca todas las categorías que coincidan con un nombre específico.
+    List<Category> getCategoriesByName(String name);
 
-    // Busca una categoría específica por ID
-    Category findById(long id);
+    //Obtiene una categoría específica por su ID.
+    Category getCategoryById(long id);
 
-    // Devuelve todas las categorías
-    List<Category> findAll();
+    // Devuelve todas las categorías registradas.
+    List<Category> getAllCategories();
 
-    // Devuelve todas las categorías activas
-    List<Category> findAllActiveCategories();
+    // Actualiza una categoría existente.
+    Category updateCategory(Category category, long id);
+
+    // Elimina una categoría por su ID.
+     
+    void deleteCategory(long id);
 }
