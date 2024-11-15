@@ -14,7 +14,7 @@ public interface PrivilegeRepository extends CrudRepository<Privilege, Long> {
 	List<Privilege> findByPrivilege(String privilege);
 	
 	// Busca un Privilege específico por id (REVISAR)
-	   Optional<Privilege> findById(Long id);
+	   Privilege findById(Long id);
 	
 	// Encontrar todos los privilegios únicos
 	Set<Privilege> findAllByPrivilege(String privilege);

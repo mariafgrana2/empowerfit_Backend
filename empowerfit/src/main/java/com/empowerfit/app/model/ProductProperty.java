@@ -1,6 +1,6 @@
 package com.empowerfit.app.model;
 @Entity
-@Table(name="ProductProperty")
+@Table(name="ProductProperties")
  public class ProductProperty {
 		@Id
 		@GeneratedValue(strategy=GenerationType.IDENTITY)
