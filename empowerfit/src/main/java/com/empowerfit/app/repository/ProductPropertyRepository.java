@@ -1,7 +1,6 @@
 package com.empowerfit.app.repository;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.data.repository.CrudRepository;
@@ -17,7 +16,7 @@ public interface ProductPropertyRepository extends CrudRepository<ProductPropert
     List<ProductProperty> findBySizeId(Long sizeId);
 
     // SELECT * FROM product_property WHERE id = ?
-    Optional<ProductProperty> findById(Long id);
+   ProductProperty findById(long id);
 
     // Obtiene todas las propiedades con un material específico
     Set<ProductProperty> findAllByMaterial(String material);
