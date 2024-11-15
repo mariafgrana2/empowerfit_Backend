@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import java.util.Date;
 
 @Entity
+@Table(name="ShopBags")
 public class ShopBag {
 
     @Id

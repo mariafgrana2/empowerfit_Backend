@@ -14,7 +14,7 @@ public interface StatusRepository extends CrudRepository<Status, Long> {
     List<Status> findByNameStatus(String nameStatus);
 
  // Busca un Privilege específico por id (REVISAR)
-    Optional<Status> findById(Long id);
+    Status findById(Long id);
     
  // Encuentra todos los Status únicos por nombre
     Set<Status> findAllByNameStatus(String nameStatus);
