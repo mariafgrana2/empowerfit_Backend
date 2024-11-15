@@ -1,5 +1,5 @@
 package com.empowerfit.app.repository;
 
-public class ProductRepository {
+public interface ProductRepository {
 
 }
