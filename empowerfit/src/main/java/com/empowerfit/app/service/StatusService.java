@@ -1,6 +1,5 @@
 package com.empowerfit.app.service;
 
-import java.util.Set;
 import com.empowerfit.app.model.Status;
 
 public interface StatusService {

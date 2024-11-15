@@ -14,7 +14,7 @@ public interface CategoryService {
     List<Category> findByDescription(String description);
 
     // Busca una categoría específica por ID
-    Optional<Category> findById(Long id);
+    Category findById(long id);
 
     // Devuelve todas las categorías
     List<Category> findAll();

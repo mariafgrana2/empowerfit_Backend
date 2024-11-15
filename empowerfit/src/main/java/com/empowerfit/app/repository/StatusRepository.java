@@ -1,7 +1,6 @@
 package com.empowerfit.app.repository;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.data.repository.CrudRepository;
@@ -14,7 +13,7 @@ public interface StatusRepository extends CrudRepository<Status, Long> {
     List<Status> findByNameStatus(String nameStatus);
 
  // Busca un Privilege específico por id (REVISAR)
-    Status findById(Long id);
+    Status findById(long id);
     
  // Encuentra todos los Status únicos por nombre
     Set<Status> findAllByNameStatus(String nameStatus);

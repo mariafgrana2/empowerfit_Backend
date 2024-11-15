@@ -1,6 +1,5 @@
 package com.empowerfit.app.service;
 
-import java.util.Set;
 import com.empowerfit.app.model.Privilege;
 
 public interface PrivilegeService {
