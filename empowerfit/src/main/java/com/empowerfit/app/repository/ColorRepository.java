@@ -1,5 +1,16 @@
 package com.empowerfit.app.repository;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public interface ColorRepository {
+import org.springframework.data.repository.CrudRepository;
 
+import com.empowerfit.app.model.Color;
+
+public interface ColorRepository extends CrudRepository<Color, Long> {
+
+
+    List<Color> findByColor(String color); //por nombre
+    Optional<Color> findById(Long id); //por color
+    Set<Color> findAll(); //todos los colores
 }
