@@ -7,7 +7,6 @@ import com.empowerfit.app.model.ProductProperty;
 
 public interface ProductPropertyService {
 
-
     ProductProperty createProductProperty(ProductProperty productProperty);
     ProductProperty getProductPropertyById(Long id);
     Set<ProductProperty> getAllProductProperties();
