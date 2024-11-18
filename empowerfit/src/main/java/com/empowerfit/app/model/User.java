@@ -1,15 +1,16 @@
 package com.empowerfit.app.model;
 
 import java.time.LocalDateTime;
-
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.Email;
@@ -28,7 +29,6 @@ public class User {
 	@Column(name="name", length=50, nullable=false)
 	private String name;
 	
-	
 	@NotBlank(message = "Correo requerido.")
     @Email(message = "Correo inválido. Ejemplo: usuario@dominio.com")
 	@Column(name="email", length=50, nullable=false)
@@ -44,17 +44,22 @@ public class User {
 	@Size(min = 8, message = "La contraseña debe tener al menos 8 caracteres.")
 	@Column(name="password", length=20, nullable=false)
 	private String password;
-	
-	@NotBlank(message = "La confirmación de la contraseña es obligatoria.")
-	@Transient
-	private String confirmPassword;
+
 	
 	@Column(name="active")
 	private boolean active;
+	
 	@Column(name="created_at")
 	private LocalDateTime createdAt;
 	@Column(name="updated_at")
 	private LocalDateTime updatedAt;
+	
+	@ManyToMany
+    @JoinTable(
+            name = "user_has_privilege"
+    )
+    private Set<Privilege> privileges;
+	
 	
 	protected User() {}
 
@@ -107,14 +112,6 @@ public class User {
 		this.password = password;
 	}
 
-	public String getConfirmPassword() {
-		return confirmPassword;
-	}
-
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = confirmPassword;
-	}
-
 	public boolean isActive() {
 		return active;
 	}
@@ -138,13 +135,19 @@ public class User {
 		this.updatedAt = updatedAt;
 	}
 	
+	public Set<Privilege> getPrivileges() {
+		return privileges;
+	}
+
+	public void setPrivileges(Set<Privilege> privileges) {
+		this.privileges = privileges;
+	}
+
 	@Override
 	public String toString() {
 		return String.format("User [id=%s, name=%s, email=%s, phone=%s, password=%s, active=%s]", id, name, email,
 				phone, password, active);
 	}
-	
-	
 	
 	
 }

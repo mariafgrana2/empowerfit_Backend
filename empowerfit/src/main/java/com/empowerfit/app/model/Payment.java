@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,10 +17,22 @@ public class Payment {
 	
 	private Long id;
 	
-	@Column(name="name_amount", length=45, nullable=false)
+	@Column(name="amount", length=45, nullable=false)
 	private String amount;
 	
+	@OneToOne
+    @JoinColumn(name = "fk_order_id", nullable = false)
+    private Order order;
+
 	protected Payment(){}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
 
 	public Payment(Long id, String amount) {
 		this.id = id;

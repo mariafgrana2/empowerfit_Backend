@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -31,6 +33,9 @@ public class Address {
     @Column(name = "country", nullable = false)
     private String country;
 
+    @ManyToOne
+	@JoinColumn(name = "fk_user_id")
+	private User user;
     
     protected Address() {}
 
@@ -90,8 +95,18 @@ public class Address {
     public void setCountry(String country) {
         this.country = country;
     }
+    
+    public User getUser() {
+		return user;
+	}
 
-    @Override
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
+	@Override
     public String toString() {
         return String.format(
             "Address [id=%s, streetAddress=%s, city=%s, state=%s, postalCode=%s, country=%s]", 

@@ -1,12 +1,17 @@
 package com.empowerfit.app.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,8 +23,24 @@ public class Order {
 	private Long id;
 	@Column(name="purchase_date", nullable=false)
 	private LocalDate purchaseDate;
-	@Column(name="total_amount", nullable=false)
+	@Column(name="total", nullable=false)
 	private Double totalAmount;
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "fk_user_id", nullable = false)
+	private User user;
+	
+	@OneToOne
+    @JoinColumn(name = "fk_status_id", nullable = false)
+    private Status status;
+
+	@OneToMany(mappedBy = "order") // Esto mapea a la propiedad 'order' en ShopBag
+    private List<ShopBag> shopBags;
+	
+	@OneToOne
+    @JoinColumn(name = "fk_address_id", nullable = false)
+    private Address address;
 	
 	protected Order() {}
 
@@ -51,14 +72,34 @@ public class Order {
 	public void setTotalAmount(Double totalAmount) {
 		this.totalAmount = totalAmount;
 	}
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+	
+	public List<ShopBag> getShopBags() {
+		return shopBags;
+	}
+
+	public void setShopBags(List<ShopBag> shopBags) {
+		this.shopBags = shopBags;
+	}
 
 	@Override
 	public String toString() {
 		return String.format("Order [id=%s, purchaseDate=%s, totalAmount=%s]", id, purchaseDate, totalAmount);
 	}
-	
-	
-	
-	
-	
 }

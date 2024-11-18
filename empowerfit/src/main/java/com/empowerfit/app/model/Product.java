@@ -1,10 +1,16 @@
 package com.empowerfit.app.model;
 
+
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -26,9 +32,32 @@ public class Product {
     @Column(name="pieces", length=50, nullable=false)
     private Integer pieces;
 
-    // TODO revisar reestructura de propiedades y stock
+   
+    @OneToMany(mappedBy = "product")
+    private List<ShopBag> shopBags;
+    
+    @ManyToOne
+    @JoinColumn(name = "fk_category_id", nullable = false)
+    private Category category;
 
-    protected Product() {}
+    /*
+    @ManyToOne
+    @JoinColumn(name = "fk_collection_id", nullable = true)
+    private Collection collection;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ShopBag> shopBags = new ArrayList<>();
+    */
+    
+   
+    public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	protected Product() {}
 
     public Product(String name, String description, Double price, String imageUrl, Integer stock, Integer pieces) {
         this.name = name;
@@ -94,8 +123,16 @@ public class Product {
     public void setPieces(Integer pieces) {
         this.pieces = pieces;
     }
+    
+    public List<ShopBag> getShopBags() {
+		return shopBags;
+	}
 
-    @Override
+	public void setShopBags(List<ShopBag> shopBags) {
+		this.shopBags = shopBags;
+	}
+
+	@Override
     public String toString() {
         return String.format(
             "Product [id=%s, name=%s, description=%s, price=%s, imageUrl=%s, stock=%s, pieces=%s]",

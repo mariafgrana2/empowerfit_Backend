@@ -39,6 +39,7 @@ public class Status {
 		this.nameStatus = nameStatus;
 	}
 	
+
 	@Override
 	public String toString() {
 		return String.format("Status [id=%s, nameStatus=%s]", id, nameStatus);

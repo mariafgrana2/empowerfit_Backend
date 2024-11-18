@@ -4,9 +4,13 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.empowerfit.app.model.Privilege;
 
+@CrossOrigin
+@RepositoryRestResource(collectionResourceRel = "privilege", path = "roles")
 public interface PrivilegeRepository extends CrudRepository<Privilege, Long> {
 	
 	// SELECT * FROM privilege WHERE privilege = ?
