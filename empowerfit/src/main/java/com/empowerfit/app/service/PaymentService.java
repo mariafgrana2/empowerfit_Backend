@@ -13,4 +13,5 @@ public interface PaymentService {
     Set<Payment> getAllPayments();
     Payment updatePayment(Payment payment, Long id);
     void deletePayment(Long id);
+	Set<Payment> getAllPayments(boolean isActive);
 }

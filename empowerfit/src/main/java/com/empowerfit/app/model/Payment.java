@@ -16,8 +16,12 @@ public class Payment {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	
 	private Long id;
+
+	private boolean active;
+
 	
 	@Column(name="amount", length=45, nullable=false)
+
 	private String amount;
 	
 	@OneToOne
@@ -57,6 +61,14 @@ public class Payment {
 	
 	public void setAmount(String amount) {
 		this.amount = amount;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	@Override
