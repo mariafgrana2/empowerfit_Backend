@@ -40,14 +40,6 @@ public class Product {
     @JoinColumn(name = "fk_category_id", nullable = false)
     private Category category;
 
-    /*
-    @ManyToOne
-    @JoinColumn(name = "fk_collection_id", nullable = true)
-    private Collection collection;
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ShopBag> shopBags = new ArrayList<>();
-    */
-    
    
     public Category getCategory() {
 		return category;

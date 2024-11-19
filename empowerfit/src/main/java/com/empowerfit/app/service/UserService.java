@@ -17,11 +17,8 @@ public interface UserService {
     // Obtiene un usuario por su número de teléfono.
     User getUserByPhone(String phone);
     
-    // Obtiene todos los usuarios activos.
-    Set<User> getActiveUsers();
-
-    // Obtiene todos los usuarios inactivos.
-    Set<User> getInactiveUsers();
+    // Obtiene todos los usuarios.
+    Set<User> getAllUsers(boolean active);
 
     // Actualiza la información de un usuario existente.
     User updateUser(User user, Long id);

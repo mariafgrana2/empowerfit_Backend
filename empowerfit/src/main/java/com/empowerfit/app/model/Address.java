@@ -8,6 +8,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Table(name="addresses")
@@ -18,18 +21,24 @@ public class Address {
     @Column(name = "id") // Especificación explícita del nombre de la columna
     private Long id;
 
+    @NotBlank(message = "La dirección no puede estar vacía.") 
     @Column(name = "street_address", nullable = false)
     private String streetAddress;
-
+    
+    @NotBlank(message = "La ciudad no puede estar vacía.") 
     @Column(name = "city", nullable = false)
     private String city;
-
+    
+    @NotBlank(message = "El estado no puede estar vacío.")
     @Column(name = "state", nullable = false)
     private String state;
-
+    
+    @NotNull(message = "El código postal es obligatorio.")
     @Column(name = "postal_code", nullable = false)
-    private int postalCode;
+    @Pattern(regexp = "\\d{5}", message = "El código postal debe constar de 5 dígitos.")
+    private String postalCode;
 
+    @NotBlank(message = "El país no puede estar vacío.")
     @Column(name = "country", nullable = false)
     private String country;
 
@@ -40,7 +49,7 @@ public class Address {
     protected Address() {}
 
  
-    public Address(String streetAddress, String city, String state, int postalCode, String country) {
+    public Address(String streetAddress, String city, String state, String postalCode, String country) {
         this.streetAddress = streetAddress;
         this.city = city;
         this.state = state;
@@ -80,11 +89,11 @@ public class Address {
         this.state = state;
     }
 
-    public int getPostalCode() {
+    public String getPostalCode() {
         return postalCode;
     }
 
-    public void setPostalCode(int postalCode) {
+    public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
 

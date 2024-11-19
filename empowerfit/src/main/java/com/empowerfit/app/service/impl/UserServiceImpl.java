@@ -50,43 +50,61 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User getUserById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<User> optionalUser = userRepository.findById(id);
+		if( optionalUser.isEmpty()) {
+			throw new IllegalStateException("No existe el usuario con id " + id);
+		}
+		User existingUser = optionalUser.get();
+		return existingUser;
 	}
 
 	@Override
 	public User getUserByEmail(String email) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<User> optionalUser = userRepository.findByEmail(email);
+		if( optionalUser.isEmpty()) {
+			throw new IllegalStateException("No existe el usuario con correo: " + email);
+		}
+		User existingUser = optionalUser.get();
+		return existingUser;
 	}
 
 	@Override
 	public User getUserByPhone(String phone) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<User> optionalUser = userRepository.findByPhone(phone);
+		if( optionalUser.isEmpty()) {
+			throw new IllegalStateException("No existe el usuario con número de celular: " + phone);
+		}
+		User existingUser = optionalUser.get();
+		return existingUser;
 	}
 
 	@Override
-	public Set<User> getActiveUsers() {
-		// TODO Auto-generated method stub
-		return null;
+	public Set<User> getAllUsers(boolean active) {
+		Set<User> users;
+		if( active ) {
+			users = userRepository.findAllByActiveTrue();
+		} else {
+			users = userRepository.findAllByActiveFalse();
+		}
+		return users;
 	}
 
-	@Override
-	public Set<User> getInactiveUsers() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public User updateUser(User user, Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		User existingUser = getUserById(id);
+		existingUser.setName( user.getName() );
+		existingUser.setPhone( user.getPhone() );
+		existingUser.setPassword( user.getPassword() );
+		existingUser.setUpdatedAt(LocalDateTime.now());
+		return userRepository.save(existingUser);
 	}
 
 	@Override
 	public void deleteUser(Long id) {
-		// TODO Auto-generated method stub
+		User existingUser = getUserById(id);
+		existingUser.setActive(false);
+		userRepository.save(existingUser);
 		
 	}
 

@@ -14,7 +14,6 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Table(name="users")
@@ -35,8 +34,6 @@ public class User {
 	private String email;
 	
 	@NotBlank(message = "Teléfono requerido.")
-    @Pattern(regexp =  "^\\d{3}\\s\\d{3}\\s\\d{4}$",
-    		message = "Formato inválido. Ejemplo: 812 040 3291")
 	@Column(name="phone", length=15, nullable=false)
 	private String phone;
 	

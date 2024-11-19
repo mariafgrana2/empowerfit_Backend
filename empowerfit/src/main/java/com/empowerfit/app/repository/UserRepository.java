@@ -13,7 +13,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
     Optional<User> findByEmail(String email);
 
     // Encuentra un usuario por su número de teléfono.
-    User findByPhone(String phone);
+    Optional<User> findByPhone(String phone);
 
     // Encuentra todos los usuarios activos.
     Set<User> findAllByActiveTrue();
