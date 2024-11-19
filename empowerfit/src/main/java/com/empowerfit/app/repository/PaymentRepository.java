@@ -9,12 +9,13 @@ import com.empowerfit.app.model.Payment;
 
 public interface PaymentRepository extends CrudRepository<Payment, Long> {
 
-    // SELECT * FROM payment WHERE amount = ?
+
     List<Payment> findByAmount(String amount);
 
-    // SELECT * FROM payment WHERE id = ?
+   
     Payment findById(long id);
 
-    // Sobrecarga para obtener todos los pagos con un monto específico
     Set<Payment> findAllByAmount(String amount);
+    Set<Payment> findAllByActiveTrue();
+    Set<Payment> findAllByActiveFalse(); 
 }
