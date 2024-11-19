@@ -103,6 +103,11 @@ import jakarta.persistence.Table;
 			return String.format("ProductProperty [id=%s, material=%s]", id, material);
 		}
 
+		public void setActive(boolean b) {
+	
+			
+		}
+
 		
 		
 }
