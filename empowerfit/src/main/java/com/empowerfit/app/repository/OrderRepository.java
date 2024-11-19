@@ -23,8 +23,5 @@ public interface OrderRepository extends CrudRepository<Order, Long>{
 
 	    //Encuentra todas las órdenes cuyo monto total sea mayor o igual a un valor específico.
 	    Set<Order> findByTotalAmountGreaterThanEqual(Double minAmount);
-
-	    //Encuentra todas las órdenes cuyo monto total sea menor a un valor específico.
-	    Set<Order> findByTotalAmountLessThan(Double maxAmount);
 	
 }

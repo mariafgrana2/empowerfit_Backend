@@ -21,25 +21,25 @@ public class Order {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="order_id", nullable=false)
 	private Long id;
-	@Column(name="purchase_date", nullable=false)
+	@Column(name="purchase_date")
 	private LocalDate purchaseDate;
 	@Column(name="total", nullable=false)
 	private Double totalAmount;
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "fk_user_id", nullable = false)
+	@JoinColumn(name = "fk_user_id")
 	private User user;
 	
 	@OneToOne
-    @JoinColumn(name = "fk_status_id", nullable = false)
+    @JoinColumn(name = "fk_status_id")
     private Status status;
 
 	@OneToMany(mappedBy = "order") // Esto mapea a la propiedad 'order' en ShopBag
     private List<ShopBag> shopBags;
 	
-	@OneToOne
-    @JoinColumn(name = "fk_address_id", nullable = false)
+	@ManyToOne
+	@JoinColumn(name = "fk_address_id")
     private Address address;
 	
 	protected Order() {}
@@ -96,6 +96,15 @@ public class Order {
 
 	public void setShopBags(List<ShopBag> shopBags) {
 		this.shopBags = shopBags;
+	}
+
+	
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	@Override

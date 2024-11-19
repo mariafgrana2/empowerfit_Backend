@@ -17,5 +17,4 @@ public interface StatusRepository extends CrudRepository<Status, Long> {
     
  // Encuentra todos los Status únicos por nombre
     Set<Status> findAllByNameStatus(String nameStatus);
-
 }
