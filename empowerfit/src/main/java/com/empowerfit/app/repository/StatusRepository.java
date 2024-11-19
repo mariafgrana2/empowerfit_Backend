@@ -10,12 +10,12 @@ import com.empowerfit.app.model.Status;
 public interface StatusRepository extends CrudRepository<Status, Long> {
 	
 	// SELECT * FROM status WHERE name_status = ?
-    List<Status> findByNameStatus(String nameStatus);
+    List<Status> findByStatus(String status);
 
  // Busca un Privilege específico por id (REVISAR)
     Status findById(long id);
     
  // Encuentra todos los Status únicos por nombre
-    Set<Status> findAllByNameStatus(String nameStatus);
+    Set<Status> findAllByStatus(String status);
 
 }

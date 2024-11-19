@@ -14,13 +14,13 @@ public class Status {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	@Column(name="name_status", length=45, nullable=false)
-	private String nameStatus;
+	@Column(name="status", length=45, nullable=false)
+	private String status;
 	
 	protected Status () {}
 	
-	public Status(String nameStatus) {
-		this.nameStatus = nameStatus;
+	public Status(String status) {
+		this.status = status;
 	}
 	
 	public Long getId() {
@@ -31,17 +31,18 @@ public class Status {
 		this.id = id;
 	}
 
-	public String getNameStatus() {
-		return nameStatus;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setNameStatus(String nameStatus) {
-		this.nameStatus = nameStatus;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 
 	@Override
 	public String toString() {
-		return String.format("Status [id=%s, nameStatus=%s]", id, nameStatus);
+		return String.format("Status [id=%s, status=%s]", id, status);
 	}
+
 }
