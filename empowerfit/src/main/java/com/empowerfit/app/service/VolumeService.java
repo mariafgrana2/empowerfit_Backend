@@ -1,23 +1,26 @@
 package com.empowerfit.app.service;
 
-import java.util.List;
-import java.util.Optional;
 import com.empowerfit.app.model.Volume;
+import java.util.List;
+
+
 
 public interface VolumeService {
+    // Crea un nuevo volumen.
+    Volume createVolume(Volume volume);
+    
+    // Obtiene un volumen específico por su ID.
+    Volume getVolumeById(Long id);
 
-    // Busca todos los volúmenes que coincidan con un valor específico en kg
-    List<Volume> findByKg(Double kg);
+    // Devuelve todos los volúmenes.
+    List<Volume> getAllVolumes();
 
-    // Busca un volumen específico por ID
-    Optional<Volume> findById(Long id);
+    // Busca volúmenes específicos por su peso en kg.
+    List<Volume> getVolumesByKg(Double kg);
 
-    // Devuelve todos los volúmenes
-    List<Volume> findAll();
+    // Actualiza un volumen existente.
+    Volume updateVolume(Volume volume, Long id);
 
-    // Devuelve todos los volúmenes mayores a un valor específico en kg
-    List<Volume> findByKgGreaterThan(Double kg);
-
-    // Devuelve todos los volúmenes menores o iguales a un valor específico en kg
-    List<Volume> findByKgLessThanEqual(Double kg);
+    // Elimina un volumen por su ID.
+    void deleteVolume(Long id);
 }

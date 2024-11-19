@@ -58,4 +58,5 @@ public class ProductPropertyServiceImpl implements ProductPropertyService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 }

@@ -14,7 +14,7 @@ public class Status {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	@Column(name="status", length=45, nullable=false)
+	@Column(name="statuses", length=45, nullable=false)
 	private String status;
 	
 	protected Status () {}
