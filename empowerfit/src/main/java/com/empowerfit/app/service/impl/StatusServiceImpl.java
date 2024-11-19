@@ -2,6 +2,7 @@ package com.empowerfit.app.service.impl;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -49,6 +50,12 @@ public class StatusServiceImpl implements StatusService {
 	public void deleteStatus(Long id) {
 		Status status = getStatusById(id);
 		statusRepository.delete(status);
+	}
+
+	@Override
+	public Optional<Status> findByName(String name) {
+		// TODO Auto-generated method stub
+		return Optional.empty();
 	}
 
 }

@@ -25,9 +25,6 @@ public interface OrderService {
 	    // Obtiene todas las órdenes cuyo monto total es mayor o igual a un valor específico.
 	    Set<Order> getOrdersByMinAmount(Double minAmount);
 
-	    // Obtiene todas las órdenes cuyo monto total es menor a un valor específico.
-	    Set<Order> getOrdersByMaxAmount(Double maxAmount);
-
 	    // Actualiza la información de una orden existente.
 	    Order updateOrder(Order order, Long id);
 
