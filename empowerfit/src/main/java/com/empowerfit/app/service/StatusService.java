@@ -12,5 +12,4 @@ public interface StatusService {
 	 Optional<Status> findByName(String name);
 	 Status updateStatus(Status status, Long id);
 	 void deleteStatus(Long id);
-
 }

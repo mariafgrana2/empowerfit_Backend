@@ -1,31 +1,20 @@
 package com.empowerfit.app.repository;
+
+import com.empowerfit.app.model.Product;
+import org.springframework.data.repository.CrudRepository;
+
 import java.util.List;
 import java.util.Optional;
-import com.empowerfit.app.model.Product;
 
-public interface ProductRepository {
+public interface ProductRepository extends CrudRepository<Product, Long> {
 
+    List<Product> findByName(String name);
+   
+    Optional<Product> findById(Long id);
+     
+    List<Product> findAllByStockGreaterThan(Integer stock);
 
-	    // Busca todos los productos por nombre
-	    List<Product> findByName(String name);
+    List<Product> findAllByPriceLessThanEqual(Double price);
 
-	    // Busca todos los productos que tengan la misma descripción
-	    List<Product> findByDescription(String description);
-
-	    // Busca los productos por precio
-	    List<Product> findByPrice(Double price);
-
-	    // Busca un producto específico por ID
-	    Optional<Product> findById(Long id);
-
-	    // Busca todos los productos que tengan una cantidad específica de stock
-	    List<Product> findByStock(Integer stock);
-
-	    // Busca todos los productos que tengan un número de piezas específico
-	    List<Product> findByPieces(Integer pieces);
-
-		List<Product> findAll();
-
-		List<Product> findAll1();
-
+    List<Product> findAllByPriceGreaterThan(Double price);
 }

@@ -25,7 +25,7 @@ public class Product {
     private String description;
     @Column(name="price", length=11, nullable=false)
     private Double price;
-    @Column(name="imageUrl", length=250, nullable=false)
+    @Column(name="imageUrl", length=350, nullable=false)
     private String imageUrl;
     @Column(name="stock", length=50, nullable=false)
     private Integer stock;
@@ -37,9 +37,8 @@ public class Product {
     private List<ShopBag> shopBags;
     
     @ManyToOne
-    @JoinColumn(name = "fk_category_id", nullable = false)
+    @JoinColumn(name = "fk_category_id")
     private Category category;
-
    
     public Category getCategory() {
 		return category;

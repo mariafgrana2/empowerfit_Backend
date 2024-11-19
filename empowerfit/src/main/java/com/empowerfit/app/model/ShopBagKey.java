@@ -7,8 +7,13 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import org.springframework.stereotype.Component;
+
+@Component
 @Embeddable
 public class ShopBagKey implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Column(name = "fk_order_id", nullable = false)
     private Long orderId;

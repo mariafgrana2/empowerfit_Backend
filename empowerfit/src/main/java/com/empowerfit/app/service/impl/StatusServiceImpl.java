@@ -4,10 +4,13 @@ package com.empowerfit.app.service.impl;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import com.empowerfit.app.model.Status;
 import com.empowerfit.app.repository.StatusRepository;
 import com.empowerfit.app.service.StatusService;
 
+@Service
 public class StatusServiceImpl implements StatusService {
 	
 	StatusRepository statusRepository;
