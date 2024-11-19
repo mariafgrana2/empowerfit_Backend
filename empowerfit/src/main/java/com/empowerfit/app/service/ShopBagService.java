@@ -16,4 +16,6 @@ public interface ShopBagService {
 	void updateShopBagsForOrder(List<ShopBag> shopBags, Long orderId);
 	void deleteShopBagsByOrderId(Long orderId);
 
+	void deleteShopBag(Long id);
+
 }
