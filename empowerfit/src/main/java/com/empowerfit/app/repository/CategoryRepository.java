@@ -2,9 +2,11 @@ package com.empowerfit.app.repository;
 
 import java.util.List;
 
+import org.springframework.data.repository.CrudRepository;
+
 import com.empowerfit.app.model.Category;
 
-public interface CategoryRepository {
+public interface CategoryRepository extends CrudRepository<Category, Long>  {
 	// Busca todas las categorías por nombre
     List<Category> findByName(String name);
 
