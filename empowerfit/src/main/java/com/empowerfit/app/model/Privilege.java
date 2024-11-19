@@ -13,8 +13,8 @@ public class Privilege {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	
 	private Long id;
+	
 	@Column(name="privilege", length=20, nullable=false)
 	private String privilege;
 	

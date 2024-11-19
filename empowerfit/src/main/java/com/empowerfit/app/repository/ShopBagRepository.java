@@ -1,23 +1,19 @@
 package com.empowerfit.app.repository;
 
-import java.util.Date;
-import java.util.List;
-
+import com.empowerfit.app.model.ShopBag;
+import com.empowerfit.app.model.ShopBagKey;
 import org.springframework.data.repository.CrudRepository;
 
-import com.empowerfit.app.model.ShopBag;
+import java.time.LocalDate;
+import java.util.List;
 
-public interface ShopBagRepository extends CrudRepository<ShopBag, Long> {
 
-    // SELECT * FROM shop_bag WHERE date = ?
-    List<ShopBag> findByDate(Date date);
+public interface ShopBagRepository extends CrudRepository<ShopBag, ShopBagKey> {
 
-    // SELECT * FROM shop_bag WHERE quantity = ?
-    List<ShopBag> findByQuantity(int quantity);
+	//Busca todas las bolsas de compras asociadas a un pedido específico.
+	List<ShopBag> findById_OrderId(Long orderId);
+	
+	// Busca todas las bolsas de compras creadas en una fecha específica.
+	List<ShopBag> findById_Date(LocalDate date);
 
-    // SELECT * FROM shop_bag WHERE amount = ?
-    List<ShopBag> findByAmount(double amount);
-
-    // SELECT * FROM shop_bag WHERE date BETWEEN ? AND ?
-    List<ShopBag> findByDateBetween(Date startDate, Date endDate);
 }

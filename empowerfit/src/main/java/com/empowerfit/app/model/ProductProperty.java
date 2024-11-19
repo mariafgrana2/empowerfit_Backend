@@ -1,10 +1,16 @@
 package com.empowerfit.app.model;
 
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -12,11 +18,40 @@ import jakarta.persistence.Table;
  public class ProductProperty {
 		@Id
 		@GeneratedValue(strategy=GenerationType.IDENTITY)
-		@Column(name="size_id")
+		@Column(name="id")
 		private Long id;
 		@Column(name="Tipo_material", length=20, nullable=false)
 		private String material;
 		
+		@ManyToOne
+		@JoinColumn(name = "fk_product_id", nullable = false)
+		private Product product;
+		
+		@ManyToMany
+	    @JoinTable(
+	            name = "product_has_size"
+	    )
+		private Set<Size> sizes;
+		@ManyToMany
+	    @JoinTable(
+	            name = "product_has_color"
+	    )
+		private Set<Color> colors;
+		@ManyToMany
+	    @JoinTable(
+	            name = "product_has_volume"
+	    )
+		private Set<Volume> volumes;
+		
+		
+		public Product getProduct() {
+			return product;
+		}
+
+		public void setProduct(Product product) {
+			this.product = product;
+		}
+
 		protected ProductProperty() {}
 
 		public ProductProperty(String material) {
@@ -37,6 +72,30 @@ import jakarta.persistence.Table;
 
 		public void setMaterial(String material) {
 			this.material = material;
+		}
+
+		public Set<Size> getSizes() {
+			return sizes;
+		}
+
+		public void setSizes(Set<Size> sizes) {
+			this.sizes = sizes;
+		}
+
+		public Set<Color> getColors() {
+			return colors;
+		}
+
+		public void setColors(Set<Color> colors) {
+			this.colors = colors;
+		}
+
+		public Set<Volume> getVolumes() {
+			return volumes;
+		}
+
+		public void setVolumes(Set<Volume> volumes) {
+			this.volumes = volumes;
 		}
 
 		@Override

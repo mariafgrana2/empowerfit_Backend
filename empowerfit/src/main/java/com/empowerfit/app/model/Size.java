@@ -17,7 +17,7 @@ public class Size {
  	
 	private Long id;
  	
-	@Column(name="name_size", length=45, nullable=false)
+	@Column(name="size", length=45, nullable=false)
  	private String size;
 	
 	protected Size () {}

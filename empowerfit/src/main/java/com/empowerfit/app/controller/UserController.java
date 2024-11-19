@@ -2,6 +2,7 @@ package com.empowerfit.app.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,7 @@ import com.empowerfit.app.model.User;
 import com.empowerfit.app.service.UserService;
 
 
+@CrossOrigin(origins = "*")
 @Controller
 @ResponseBody
 @RequestMapping("/api/v1/users")  
