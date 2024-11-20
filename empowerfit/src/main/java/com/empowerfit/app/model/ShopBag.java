@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 
 
 @Entity
-@Table(name="ShopBags")
+@Table(name="shopbags")
 public class ShopBag {
 
 	@EmbeddedId
@@ -24,6 +24,7 @@ public class ShopBag {
 	@ManyToOne
     @JoinColumn(name = "fk_order_id", insertable = false, updatable = false)
     private Order order;
+	
 	
 	@ManyToOne
     @JoinColumn(name = "fk_product_id", insertable = false, updatable = false)
