@@ -1,7 +1,8 @@
 package com.empowerfit.app.model;
 
 import java.time.LocalDate;
-import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,7 +11,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -19,24 +19,29 @@ import jakarta.persistence.Table;
 public class Order {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="order_id", nullable=false)
 	private Long id;
+	
 	@Column(name="purchase_date")
 	private LocalDate purchaseDate;
-	@Column(name="total", nullable=false)
+	
+	@Column(name="total")
 	private Double totalAmount;
 	
+	/*
+	@OneToMany(mappedBy = "order")
+    private List<ShopBag> shopBags;
+    */
 	
 	@ManyToOne
 	@JoinColumn(name = "fk_user_id")
+	@JsonIgnoreProperties({"name", "email", "phone", "password", "active", "privileges", "createdAt", "updatedAt"})
 	private User user;
+	
 	
 	@OneToOne
     @JoinColumn(name = "fk_status_id")
     private Status status;
-
-	@OneToMany(mappedBy = "order") // Esto mapea a la propiedad 'order' en ShopBag
-    private List<ShopBag> shopBags;
+	
 	
 	@ManyToOne
 	@JoinColumn(name = "fk_address_id")
@@ -90,15 +95,6 @@ public class Order {
 		this.status = status;
 	}
 	
-	public List<ShopBag> getShopBags() {
-		return shopBags;
-	}
-
-	public void setShopBags(List<ShopBag> shopBags) {
-		this.shopBags = shopBags;
-	}
-
-	
 	public Address getAddress() {
 		return address;
 	}
@@ -106,6 +102,7 @@ public class Order {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
+
 
 	@Override
 	public String toString() {

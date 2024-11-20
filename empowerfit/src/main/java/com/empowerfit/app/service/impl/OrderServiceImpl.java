@@ -1,6 +1,7 @@
 package com.empowerfit.app.service.impl;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -46,7 +47,7 @@ public class OrderServiceImpl implements OrderService {
     public Set<Order> getOrdersByMinAmount(Double minAmount) {
         return orderRepository.findByTotalAmountGreaterThanEqual(minAmount);
     }
-
+    
     @Override
     public Order updateOrder(Order order, Long id) {
         Order existingOrder = getOrderById(id);
@@ -59,5 +60,12 @@ public class OrderServiceImpl implements OrderService {
         Order existingOrder = getOrderById(id);
         orderRepository.delete(existingOrder);
     }
+
+	 @Override
+	 public List<Order> getAllOrders() {
+	 List<Order> orders = new ArrayList<>();
+	 orderRepository.findAll().forEach(orders::add); // Convertimos Iterable a List
+	 return orders;
+	 }
 }
 

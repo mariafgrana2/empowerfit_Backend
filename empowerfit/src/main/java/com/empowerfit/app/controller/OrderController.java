@@ -57,6 +57,13 @@ public class OrderController {
         return orderService.getOrdersByMinAmount(minAmount);
     }
 
+    
+    @GetMapping
+    public ResponseEntity<List<Order>> getAllOrders() {
+        List<Order> orders = orderService.getAllOrders();
+        return ResponseEntity.ok(orders);
+    }
+    
     @PutMapping("{id}") // http://localhost:8080/api/v1/orders/{id}
     ResponseEntity<Order> updateOrder(@PathVariable("id") Long id, @RequestBody Order order) {
         Order updatedOrder = orderService.updateOrder(order, id);

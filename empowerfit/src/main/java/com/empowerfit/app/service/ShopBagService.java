@@ -19,3 +19,4 @@ public interface ShopBagService {
 	void deleteShopBag(Long id);
 
 }
+
