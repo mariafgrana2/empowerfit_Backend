@@ -22,3 +22,17 @@ INSERT INTO products(name, description, price, image_url, stock, pieces, fk_cate
 
 INSERT INTO status(statuses) VALUES ('en proceso');
 INSERT INTO status(statuses) VALUES ('entrega realizada');
+
+INSERT INTO orders(fk_user_id, fk_status_id, total, order_date) VALUES ( 1, 1, 449.00, '2024-11-08T11:13:14');
+INSERT INTO orders(fk_user_id, fk_status_id, total, order_date) VALUES ( 1, 2, 449.00, '2024-11-08T11:13:14');
+INSERT INTO orders(fk_user_id, fk_status_id, total, order_date) VALUES ( 1, 1, 399.00, '2024-11-08T11:13:14');
+INSERT INTO orders(fk_user_id, fk_status_id, total, order_date) VALUES ( 1, 2, 399.00, '2024-11-08T11:13:14');
+
+INSERT INTO order_has_products(order_id, product_id, quantity, order_sold) VALUES (1, 1, 1, 449.00);
+INSERT INTO order_has_products(order_id, product_id, quantity, order_sold) VALUES (2, 1, 1, 449.00);
+INSERT INTO order_has_products(order_id, product_id, quantity, order_sold) VALUES (3, 2, 1, 399.00);
+INSERT INTO order_has_products(order_id, product_id, quantity, order_sold) VALUES (4, 2, 1, 399.00);
+
+
+
+

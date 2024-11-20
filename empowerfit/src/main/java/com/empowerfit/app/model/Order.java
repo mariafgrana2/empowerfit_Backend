@@ -1,6 +1,6 @@
 package com.empowerfit.app.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -11,46 +11,40 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name="orders")
 public class Order {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name="purchase_date")
-	private LocalDate purchaseDate;
+	@Column(name="order_date")
+	private LocalDateTime orderDate;
 	
 	@Column(name="total")
 	private Double totalAmount;
-	
-	/*
-	@OneToMany(mappedBy = "order")
-    private List<ShopBag> shopBags;
-    */
 	
 	@ManyToOne
 	@JoinColumn(name = "fk_user_id")
 	@JsonIgnoreProperties({"name", "email", "phone", "password", "active", "privileges", "createdAt", "updatedAt"})
 	private User user;
 	
-	
-	@OneToOne
-    @JoinColumn(name = "fk_status_id")
-    private Status status;
-	
+	@ManyToOne
+	@JoinColumn(name = "fk_status_id")
+	private Status status;
+
 	
 	@ManyToOne
 	@JoinColumn(name = "fk_address_id")
     private Address address;
 	
-	protected Order() {}
+	public Order() {}
 
-	public Order(LocalDate purchaseDate, Double totalAmount) {
-		this.purchaseDate = purchaseDate;
+	public Order(LocalDateTime orderDate, Double totalAmount) {
+		this.orderDate = orderDate;
 		this.totalAmount = totalAmount;
 	}
 
@@ -62,12 +56,12 @@ public class Order {
 		this.id = id;
 	}
 
-	public LocalDate getPurchaseDate() {
-		return purchaseDate;
+	public LocalDateTime getOrderDate() {
+		return orderDate;
 	}
 
-	public void setPurchaseDate(LocalDate purchaseDate) {
-		this.purchaseDate = purchaseDate;
+	public void setOrderDate(LocalDateTime orderDate) {
+		this.orderDate = orderDate;
 	}
 
 	public Double getTotalAmount() {
@@ -106,6 +100,6 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return String.format("Order [id=%s, purchaseDate=%s, totalAmount=%s]", id, purchaseDate, totalAmount);
+		return String.format("Order [id=%s, orderDate=%s, totalAmount=%s]", id, orderDate, totalAmount);
 	}
 }

@@ -1,5 +1,5 @@
 package com.empowerfit.app.service;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -16,11 +16,11 @@ public interface OrderService {
 	    //List<Order> getOrdersByUserId(Long userId);
 
 	    // Obtiene todas las órdenes realizadas en una fecha específica.
-	    List<Order> getOrdersByPurchaseDate(LocalDate purchaseDate);
+	    List<Order> getOrdersByOrderDate(LocalDateTime orderDate);
 
 	    // Obtiene todas las órdenes realizadas en un rango de fechas.
 	     
-	    List<Order> getOrdersByDateRange(LocalDate startDate, LocalDate endDate);
+	    List<Order> getOrdersByDateRange(LocalDateTime startDate, LocalDateTime endDate);
 
 	    // Obtiene todas las órdenes cuyo monto total es mayor o igual a un valor específico.
 	    Set<Order> getOrdersByMinAmount(Double minAmount);

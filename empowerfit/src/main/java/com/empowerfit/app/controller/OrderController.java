@@ -1,6 +1,6 @@
 package com.empowerfit.app.controller;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -43,12 +43,12 @@ public class OrderController {
     }
 
     @GetMapping("/by") // http://localhost:8080/api/v1/orders/by?date={date}
-    List<Order> getOrdersByPurchaseDate(@RequestParam("date") LocalDate date) {
-        return orderService.getOrdersByPurchaseDate(date);
+    List<Order> getOrdersByOrderDate(@RequestParam("date") LocalDateTime date) {
+        return orderService.getOrdersByOrderDate(date);
     }
 
     @GetMapping("/range") // http://localhost:8080/api/v1/orders/range?start={startDate}&end={endDate}
-    List<Order> getOrdersByDateRange(@RequestParam("start") LocalDate startDate, @RequestParam("end") LocalDate endDate) {
+    List<Order> getOrdersByDateRange(@RequestParam("start") LocalDateTime startDate, @RequestParam("end") LocalDateTime endDate) {
         return orderService.getOrdersByDateRange(startDate, endDate);
     }
 
@@ -57,7 +57,6 @@ public class OrderController {
         return orderService.getOrdersByMinAmount(minAmount);
     }
 
-    
     @GetMapping
     public ResponseEntity<List<Order>> getAllOrders() {
         List<Order> orders = orderService.getAllOrders();

@@ -1,6 +1,6 @@
 package com.empowerfit.app.service.impl;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -23,7 +23,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order createOrder(Order order) {
         order.setId(null); // Aseguramos que sea una nueva orden
-        order.setPurchaseDate(LocalDate.now());
+        order.setOrderDate(LocalDateTime.now());
         return orderRepository.save(order);
     }
 
@@ -34,13 +34,13 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> getOrdersByPurchaseDate(LocalDate purchaseDate) {
-        return orderRepository.findByPurchaseDate(purchaseDate);
+    public List<Order> getOrdersByOrderDate(LocalDateTime orderDate) {
+        return orderRepository.findByOrderDate(orderDate);
     }
 
     @Override
-    public List<Order> getOrdersByDateRange(LocalDate startDate, LocalDate endDate) {
-        return orderRepository.findByPurchaseDateBetween(startDate, endDate);
+    public List<Order> getOrdersByDateRange(LocalDateTime startDate, LocalDateTime endDate) {
+        return orderRepository.findByOrderDateBetween(startDate, endDate);
     }
 
     @Override

@@ -17,24 +17,26 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     @Column(name="name", length=200, nullable=false)
     private String name;
+    
     @Column(name="description", length=1000, nullable=false)
     private String description;
+    
     @Column(name="price", length=11, nullable=false)
     private Double price;
+    
     @Column(name="imageUrl", length=350, nullable=false)
     private String imageUrl;
+    
     @Column(name="stock", length=50, nullable=false)
     private Integer stock;
+    
     @Column(name="pieces", length=50, nullable=false)
     private Integer pieces;
 
    
-    /*@OneToMany(mappedBy = "product")
-    private List<ShopBag> shopBags;
-    */
-    
     @ManyToOne
     @JoinColumn(name = "fk_category_id")
     private Category category;
@@ -47,7 +49,7 @@ public class Product {
 		this.category = category;
 	}
 
-	protected Product() {}
+	public Product() {}
 
     public Product(String name, String description, Double price, String imageUrl, Integer stock, Integer pieces) {
         this.name = name;

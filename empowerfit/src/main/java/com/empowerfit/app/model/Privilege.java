@@ -18,7 +18,7 @@ public class Privilege {
 	@Column(name="privilege", length=20, nullable=false)
 	private String privilege;
 	
-	protected Privilege () {}
+	public Privilege () {}
 	
 	public Privilege(String privilege) {
 		this.privilege = privilege;
